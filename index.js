@@ -7,9 +7,15 @@ var users = require('./user-db');
 var app = express();
 app.listen(4000);
 
-app.use(logger())
-app.use(express.static(path.join(__dirname, 'public')))
-app.use(express.static(path.join(__dirname, 'files')))
+logger.token('localDate',function getDate(req) {
+  let date = new Date();
+  return date.toLocaleString();
+});
+logger.format('combined', ':remote-addr :remote-user [:localDate] :method :url :status :res[content-length]');
+
+app.use(logger('combined'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'files')));
 app.use(bodyParser.json());
 
 app.use(function(req, res, next) {
