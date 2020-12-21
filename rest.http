@@ -1,0 +1,35 @@
+### file variables
+@host = localhost:4000
+@json = application/json
+
+### get user list
+GET /users
+Host: {{host}}
+Content-Type: {{json}}
+
+### get user list
+GET /users/3
+Host: {{host}}
+Content-Type: {{json}}
+
+### insert users
+PUT /users
+Host: {{host}}
+Content-Type: {{json}}
+
+{
+    "id": {{$randomInt 1 10000}},
+    "name": "Suzuki-{{$localDatetime 'HH:mm:ss'}}",
+    "email": "suzuki@example.com"
+}
+
+### update users
+POST /users/3
+Host: {{host}}
+Content-Type: {{json}}
+
+{
+    "id": 3,
+    "name": "Suzuki-{{$localDatetime 'HH:mm:ss'}}",
+    "email": "suzuki@example.com"
+}

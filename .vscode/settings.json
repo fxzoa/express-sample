@@ -1,0 +1,39 @@
+{
+    "rest-client.previewOption": "exchange",
+    "rest-client.followredirect": true,
+    "rest-client.logLevel": "verbose",
+    "rest-client.fontFamily": "Meiryo UI",
+    "rest-client.fontSize": 12,
+    "rest-client.showResponseInDifferentTab": false,
+    "rest-client.timeoutinmilliseconds": 5000,
+    "rest-client.previewColumn": "beside",
+    "rest-client.decodeEscapedUnicodeCharacters": true,
+    "rest-client.excludeHostsForProxy": [],
+    "rest-client.certificates": {},
+    "rest-client.defaultHeaders": {
+        "Content-Type": "application/json; charset=utf-8",
+        "User-Agent": "vscode-restclient"
+    },
+    "rest-client.environmentVariables": {
+        "$shared": {
+            "version": "v1",
+            "prodToken": "foo",
+            "nonProdToken": "user password"
+        },
+        "local": {
+            "version": "v2",
+            "host": "localhost:80",
+            "token": "{{$shared nonProdToken}}",
+            "secretKey": "devSecret"
+        },
+        "production": {
+            "host": "example.com",
+            "token": "{{$shared prodToken}}",
+            "secretKey" : "prodSecret"
+        }
+    },
+    "workbench.editor.openSideBySideDirection":"right",
+//    "http.proxy": "http://hoge.hoge.jp:18080/",
+//    "https.proxy": "http://hoge.hoge.jp:18080/",
+    "http.proxyStrictSSL": false,
+}
