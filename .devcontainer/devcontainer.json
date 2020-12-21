@@ -1,0 +1,60 @@
+{
+	"name": "${localWorkspaceFolderBasename}",
+
+	// Sets the run context to one level up instead of the .devcontainer folder.
+	"context": "..",
+
+	// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
+	"dockerFile": "Dockerfile",
+
+	// Set *default* container specific settings.json values on container create.
+	"settings": {
+		"terminal.integrated.shell.linux": null
+	},
+
+	"containerEnv": {
+		"WORKSPACE": "${containerWorkspaceFolder}",
+	},
+
+	"remoteEnv": {
+		"PATH": "${containerEnv:PATH}:${containerWorkspaceFolder}/bin",
+	},
+
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"dbaeumer.vscode-eslint",
+		"eg2.vscode-npm-script",
+		"christian-kohler.npm-intellisense",
+		"humao.rest-client",
+		"mechatroner.rainbow-csv",
+		"janisdd.vscode-edit-csv",
+		"ibm.output-colorizer",
+		"oscarmcm.ocean-space",
+		"emilast.logfilehighlighter",
+		"coenraads.bracket-pair-colorizer"
+	],
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [ 4000 ],
+
+	"overrideCommand": false,
+
+	// Uncomment the next line to run commands after the container is created - for example installing curl.
+	"postCreateCommand": "bash ${containerWorkspaceFolder}/.devcontainer/install-dev-tools.sh",
+
+	//"postStartCommand": [],
+	//"postAttachCommand": [],
+
+	// Uncomment when using a ptrace-based debugger like C++, Go, and Rust
+	"runArgs": [ "--privileged", "--net=host", "--name=${localWorkspaceFolderBasename}" ],
+
+	// Uncomment to use the Docker CLI from inside the container. See https://aka.ms/vscode-remote/samples/docker-from-docker.
+	// "mounts": [ "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind" ],
+
+	// Uncomment to connect as a non-root user if you've added one. See https://aka.ms/vscode-remote/containers/non-root.
+	// "remoteUser": "vscode"
+
+	//"shutdownAction": "none"
+}
