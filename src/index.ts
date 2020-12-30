@@ -1,28 +1,17 @@
-import { NextFunction, Request, Response } from "express";
-
 import express from "express";
-import logger from "morgan";
+import { NextFunction, Request, Response } from "express";
 import bodyParser from "body-parser";
 import path from "path";
-
-import { users } from "./user-db";
+import { logger } from "./logger";
+import { users } from "./users";
 
 const app: express.Express = express();
 app.listen(4000);
 
-logger.token("localDate", function getDate(req: Request): string {
-  return new Date().toLocaleString();
-});
-
-logger.format(
-  "combined",
-  ":remote-addr :remote-user [:localDate] :method :url :status :res[content-length]"
-);
-
-app.use(logger("combined"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "files")));
 app.use(bodyParser.json());
+app.use(logger);
 
 app.use(function (req: Request, res: Response, next: NextFunction) {
   res.header("Access-Control-Allow-Origin", "*");
