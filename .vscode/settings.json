@@ -1,39 +1,68 @@
 {
-    "rest-client.previewOption": "exchange",
-    "rest-client.followredirect": true,
-    "rest-client.logLevel": "verbose",
-    "rest-client.fontFamily": "Meiryo UI",
-    "rest-client.fontSize": 12,
-    "rest-client.showResponseInDifferentTab": false,
-    "rest-client.timeoutinmilliseconds": 5000,
-    "rest-client.previewColumn": "beside",
-    "rest-client.decodeEscapedUnicodeCharacters": true,
-    "rest-client.excludeHostsForProxy": [],
-    "rest-client.certificates": {},
-    "rest-client.defaultHeaders": {
-        "Content-Type": "application/json; charset=utf-8",
-        "User-Agent": "vscode-restclient"
+  // Prettier plugin setting
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // Live Sass Compiler plugin setting
+  "liveSassCompile.settings.generateMap": false,
+  "liveSassCompile.settings.formats": [
+    {
+      "format": "expanded",
+      "extensionName": ".css",
+      "savePath": "~/../css/"
+    }
+  ],
+  "liveSassCompile.settings.autoprefix": [
+    "> 1%",
+    "last 2 versions",
+    "Firefox ESR"
+  ],
+
+  // Live Server plugin setting
+  "liveServer.settings.donotShowInfoMsg": true,
+  "liveServer.settings.CustomBrowser": "chrome",
+
+  //ESLint plugin setting
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+
+  // rest.client plugin setting
+  "rest-client.previewOption": "exchange",
+  "rest-client.followredirect": true,
+  "rest-client.logLevel": "verbose",
+  "rest-client.fontFamily": "Meiryo UI",
+  "rest-client.fontSize": 12,
+  "rest-client.showResponseInDifferentTab": false,
+  "rest-client.timeoutinmilliseconds": 500000,
+  "rest-client.previewColumn": "beside",
+  "rest-client.decodeEscapedUnicodeCharacters": true,
+  "rest-client.excludeHostsForProxy": [],
+  "rest-client.certificates": {},
+  "rest-client.defaultHeaders": {
+    "Content-Type": "application/json; charset=utf-8",
+    "User-Agent": "vscode-restclient"
+  },
+  "rest-client.environmentVariables": {
+    "$shared": {
+      "version": "v1",
+      "prodToken": "foo",
+      "nonProdToken": "user password"
     },
-    "rest-client.environmentVariables": {
-        "$shared": {
-            "version": "v1",
-            "prodToken": "foo",
-            "nonProdToken": "user password"
-        },
-        "local": {
-            "version": "v2",
-            "host": "localhost:80",
-            "token": "{{$shared nonProdToken}}",
-            "secretKey": "devSecret"
-        },
-        "production": {
-            "host": "example.com",
-            "token": "{{$shared prodToken}}",
-            "secretKey" : "prodSecret"
-        }
+    "local": {
+      "version": "v2",
+      "host": "localhost:80",
+      "token": "{{$shared nonProdToken}}",
+      "secretKey": "devSecret"
     },
-    "workbench.editor.openSideBySideDirection":"right",
-//    "http.proxy": "http://hoge.hoge.jp:18080/",
-//    "https.proxy": "http://hoge.hoge.jp:18080/",
-    "http.proxyStrictSSL": false,
+    "production": {
+      "host": "example.com",
+      "token": "{{$shared prodToken}}",
+      "secretKey": "prodSecret"
+    }
+  },
+  "workbench.editor.openSideBySideDirection": "right",
+  //    "http.proxy": "http://hoge.hoge.jp:18080/",
+  //    "https.proxy": "http://hoge.hoge.jp:18080/",
+  "http.proxyStrictSSL": false
 }

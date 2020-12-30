@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  sample:
+    build: .
+    image: express-sample
+    container_name: express-sample
+    hostname: express-sample
+    command: >
+      sh -c "npm run start"
+    ports:
+      - "4000:4000"
+      - "9229:9229"
+    environment:
+      - TZ=Asia/Tokyo
+    volumes:
+      - .:/worker
+    working_dir: /worker
+    logging:
+      options:
+        max-size: "10k"
+        max-file: "1"
