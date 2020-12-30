@@ -2,9 +2,9 @@ version: "3.8"
 services:
   sample:
     build: .
-    image: express-sample
-    container_name: express-sample
-    hostname: express-sample
+    image: webApi
+    container_name: webApi
+    hostname: webApi
     command: >
       sh -c "npm run start"
     ports:
