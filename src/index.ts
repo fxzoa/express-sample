@@ -64,12 +64,14 @@ app.get("/users/:id", function (req: Request, res: Response) {
 
 app.put("/users", function (req: Request, res: Response) {
   users.push(req.body);
+  console.log("## user added! ##");
   res.status(201).end();
 });
 
 app.post("/users/:id", function (req: Request, res: Response) {
   for (let i = 0; i < users.length; i++) {
     if (users[i].id == Number(req.params.id)) {
+      console.log(`## find user. ${JSON.stringify(users[i])} ##`);
       users[i] = req.body;
     }
   }
