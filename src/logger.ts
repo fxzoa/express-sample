@@ -1,15 +1,13 @@
-import debug from "debug";
 import morgan from "morgan";
+import { Request } from "express";
 
 morgan.token("localDate", function getDate(req: Request): string {
   return new Date().toLocaleString();
 });
 
 morgan.format(
-  "combined",
+  "stream",
   ":remote-addr :remote-user [:localDate] :method :url :status :res[content-length]"
 );
 
-export let logger = morgan("combined", {
-  stream: { write: (msg) => debug("info")(msg) },
-});
+export let logger = morgan("combined");
